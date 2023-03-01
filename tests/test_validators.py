@@ -905,7 +905,7 @@ def test_root_validator_pre():
         Model(b='snap dragon')
 
     assert root_val_values == [{'a': '123', 'b': 'bar'}, {'b': 'snap dragon'}]
-    assert exc_info.value.errors() == [{'loc': ('__root__',), 'msg': 'foobar', 'type': 'value_error'}]
+    assert exc_info.value.errors() == [{'loc': ('__root__@Model',), 'msg': 'foobar', 'type': 'value_error'}]
 
 
 def test_root_validator_repeat():

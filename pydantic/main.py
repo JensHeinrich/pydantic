@@ -1050,7 +1050,7 @@ def validate_model(  # noqa: C901 (ignore complexity)
         try:
             input_data = validator(cls_, input_data)
         except (ValueError, TypeError, AssertionError) as exc:
-            return {}, set(), ValidationError([ErrorWrapper(exc, loc=ROOT_KEY)], cls_)
+            return {}, set(), ValidationError([ErrorWrapper(exc, loc=f'{ROOT_KEY}@{cls_.__name__}')], cls_)
 
     for name, field in model.__fields__.items():
         value = input_data.get(field.alias, _missing)
